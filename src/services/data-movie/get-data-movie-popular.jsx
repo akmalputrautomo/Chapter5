@@ -1,15 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import { API_ENDPOINT } from "../../utils/api-endpoint";
-import http from "../../utils/http";
+import http3 from "../../utils/http3";
 
-const fetchDataMoviePopular = async ({ queryKey }) => {
-  const [_key, _params] = queryKey;
-  const { data } = await http.get(_key, { params: _params });
+const fetchDataMoviePopular = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const { data } = await http3.get(`${API_ENDPOINT.POPULAR}`);
   return data;
 };
 
-const useMovieDataPopularQuery = (options) => {
-  return useQuery([API_ENDPOINT.POPULAR, options], fetchDataMoviePopular);
-};
+// const useMovieDataPopularQuery = (options) => {
+//   return useQuery([API_ENDPOINT.POPULAR, options], fetchDataMoviePopular);
+// };
 
-export { fetchDataMoviePopular, useMovieDataPopularQuery };
+export { fetchDataMoviePopular };

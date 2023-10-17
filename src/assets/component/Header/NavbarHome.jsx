@@ -16,15 +16,15 @@ export const NavbarHome = () => {
   // handle search dengan enter setelah input movie
   const handleEnterKeyPress = (e) => {
     if (e.key === "Enter" && search.trim() !== "") {
-      navigate(`/Search?query=${search}`);
+      navigate(`/Search/${search}`);
     }
-  };  
+  };
 
   const Logout = () => {
-      CookieStorage.remove(CookieKeys.AuthToken);
-      toast.warning("Logout Berhasil");
-      setTimeout(() => {
-        window.location.href = "/Login";
+    CookieStorage.remove(CookieKeys.AuthToken);
+    toast.warning("Logout Berhasil");
+    setTimeout(() => {
+      window.location.href = "/Login";
     }, 2000);
   };
 
@@ -34,7 +34,11 @@ export const NavbarHome = () => {
       <div className="px-2 py-3">
         <span
           className="text-red-600 text-3xl font-bold cursor-pointer underline underline-offset-1"
-          onClick={() => {navigate("/")}}>Movie-List
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Movie-List
         </span>
       </div>
 
@@ -55,17 +59,25 @@ export const NavbarHome = () => {
         <button
           type="button"
           className="px-6 py-2 bg-transparent text-red-500 border border-red-500 rounded-3xl hover:bg-red-600 hover:text-white"
-          onClick={()=>{navigate("/Login")}}>Login
+          onClick={() => {
+            navigate("/Login");
+          }}
+        >
+          Login
         </button>
 
         <button
           type="button"
           className="px-4 py-2 bg-red-600 text-white rounded-3xl hover:bg-red-700"
-          onClick={()=>{navigate("/Register")}}>Register
+          onClick={() => {
+            navigate("/Register");
+          }}
+        >
+          Register
         </button>
 
         <span className="font-bold text-red-500 cursor-pointer hover:text-white">
-          <AiOutlinePoweroff size={35} onClick={Logout}/>
+          <AiOutlinePoweroff size={35} onClick={Logout} />
         </span>
       </div>
     </div>
