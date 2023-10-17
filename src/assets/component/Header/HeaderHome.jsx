@@ -56,7 +56,7 @@ export const HeaderHome = () => {
     const autoSlide = setInterval(() => {
       nextSlide();
     }, 3000);
-    //handle clear 
+    //handle clear
     return () => {
       clearInterval(autoSlide);
     };
@@ -65,9 +65,7 @@ export const HeaderHome = () => {
   return (
     <div className="h-screen w-full relative ">
       {/* Image */}
-      <div
-        style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-        className="h-screen w-full bg-center bg-cover duration-500 absolute top-0 left-0 z-0 border-b-2 border-red-500"></div>
+      <div style={{ backgroundImage: `url(${slides[currentIndex].url})` }} className="h-screen w-full bg-center bg-cover duration-500 absolute top-0 left-0 z-0 border-b-2 border-red-500"></div>
       {/* Text */}
       <div className="absolute inset-0 flex flex-col items-start justify-center p-48 z-1">
         {/* Left Arrow */}
@@ -81,26 +79,17 @@ export const HeaderHome = () => {
         {/* Dot Slide */}
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex justify-center space-x-2 z-2">
           {slides.map((slide, slideIndex) => (
-            <div
-              key={slideIndex}
-              onClick={() => goToSlide(slideIndex)}
-              className={`text-2xl cursor-pointer ${
-                slideIndex === currentIndex ? "text-white" : "text-gray-500"}`}>
+            <div key={slideIndex} onClick={() => goToSlide(slideIndex)} className={`text-2xl cursor-pointer ${slideIndex === currentIndex ? "text-white" : "text-gray-500"}`}>
               <IoRemoveOutline size={50} />
             </div>
           ))}
         </div>
         {/* Tittle */}
-        <h1 className="text-white text-6xl font-bold w-[60%]">
-          {slides[currentIndex].tittle}
-        </h1>
+        <h1 className="text-white text-6xl font-bold w-[60%]">{slides[currentIndex].tittle}</h1>
         {/* Overview Text */}
-        <span className="text-white text-base mt-6 w-[40%]">
-          "{slides[currentIndex].text}"
-        </span>
+        <span className="text-white text-base mt-6 w-[40%]">"{slides[currentIndex].text}"</span>
         {/* Button Watch Trailer */}
-        <button className="flex items-center gap-2 px-2 py-2 bg-red-500 text-white rounded-full mt-8 border border-1 hover:bg-red-600"
-        onClick={() => watchTrailer(slides[currentIndex].trailer)}>
+        <button className="flex items-center gap-2 px-2 py-2 bg-red-500 text-white rounded-full mt-8 border border-1 hover:bg-red-600" onClick={() => watchTrailer(slides[currentIndex].trailer)}>
           <FaPlayCircle size={30} />
           WATCH TRAILER
         </button>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineMail, AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { useLoginUser } from "../../services/auth/Login-User";
+import { GoogleLogin } from "@react-oauth/google";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ export const Login = () => {
       <div className="border-4 border-black px-20 py-16 bg-white rounded-lg">
         <h1 className="text-4xl font-bold pb-10 text-center">LOGIN</h1>
         <div className="flex flex-col items-center relative">
-          <h1 className="text-lg font-normal text-left w-96">Emailaaa :</h1>
+          <h1 className="text-lg font-normal text-left w-96">Email :</h1>
           <input placeholder="Email Address" onChange={handleInput} className="border-2 border-black w-96 py-2 px-2 rounded text-center" value={Email} id="email" type="email" />
           <AiOutlineMail className="absolute right-3 top-10 text-black" size={20} />
 
@@ -50,7 +51,6 @@ export const Login = () => {
             <AiFillEyeInvisible className="absolute right-3 top-36 text-black cursor-pointer" size={20} onClick={handleShowPassword} />
           )}
         </div>
-
         <div className="py-4 flex flex-col">
           <button
             type="button"
@@ -74,6 +74,15 @@ export const Login = () => {
             </span>
           </span>
         </div>
+        <GoogleLogin
+          onSuccess={(credentialResponse) => {
+            console.log(credentialResponse);
+          }}
+          onError={() => {
+            console.log("Login Failed");
+          }}
+          useOneTap
+        />
       </div>
     </div>
   );

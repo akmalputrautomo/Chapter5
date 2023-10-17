@@ -6,14 +6,13 @@ import { useNavigate } from "react-router-dom";
 
 export const MoviePopular = () => {
   const navigate = useNavigate();
-    //mengambil data movie popular
+  //mengambil data movie popular
   const [PageNow, setPageNow] = useState(1);
   const { data: LoadData } = useMovieDataPopularQuery({
-    page: PageNow
+    page: PageNow,
   });
 
-  useEffect(() => {
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div className="bg-black pt-5">
@@ -24,16 +23,20 @@ export const MoviePopular = () => {
       {/* Prev dan Next Page */}
       <div className="text-center text-white text-2xl flex items-center justify-center gap-2">
         <span
-          className={`pt-6 pb-6 cursor-pointer ${PageNow === 1 ? 'pointer-events-none text-gray-500' : ''}`}
+          className={`pt-6 pb-6 cursor-pointer ${PageNow === 1 ? "pointer-events-none text-gray-500" : ""}`}
           onClick={() => {
-            if (PageNow > 1) setPageNow(PageNow - 1)}}>
+            if (PageNow > 1) setPageNow(PageNow - 1);
+          }}
+        >
           <IoMdArrowBack size={40} />
         </span>
         <h1 className="pt-6 pb-6">Movie Page {PageNow}</h1>
         <span
           className="pt-6 pb-6 cursor-pointer flex items-center"
           onClick={() => {
-            setPageNow(PageNow + 1)}}>
+            setPageNow(PageNow + 1);
+          }}
+        >
           <IoMdArrowForward size={40} />
         </span>
       </div>
@@ -45,9 +48,13 @@ export const MoviePopular = () => {
             <div
               key={index}
               onClick={() => {
-                navigate(`/Detail/${value.id}`)}}>
+                navigate(`/Detail/${value.id}`);
+              }}
+            >
               <RenderMovie dataMovie={value} DataAll={LoadData.results} />
-            </div>)})}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
