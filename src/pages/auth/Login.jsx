@@ -35,7 +35,7 @@ export const Login = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center bg-gradient-to-r from-blue-800 via-gray-600 to-gray-400 h-screen">
+    <div className="flex flex-col justify-center items-center bg-gradient-to-r from-red-600 via-gray-600 to-red-400 h-screen">
       <div className="border-4 border-black px-20 py-16 bg-white rounded-lg">
         <h1 className="text-4xl font-bold pb-10 text-center">LOGIN</h1>
         <div className="flex flex-col items-center relative">

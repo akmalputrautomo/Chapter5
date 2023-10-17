@@ -24,7 +24,7 @@ export const MoviePopular = () => {
   return (
     <div className="bg-black pt-5">
       <div className="text-center px-20 border-b-2 pb-4 border-red-500">
-        <h1 className="text-red-600 text-5xl font-bold mb-4">~~~~~ Popular Movie ~~~~~</h1>
+        <h1 className="text-white text-5xl font-bold mb-4"> Popular Movie </h1>
       </div>
 
       {/* Prev dan Next Page */}

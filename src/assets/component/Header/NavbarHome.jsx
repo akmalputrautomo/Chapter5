@@ -47,7 +47,7 @@ export const NavbarHome = () => {
         <input
           type="text"
           placeholder="What do you want to watch?"
-          className="text-center w-[25rem] py-2 rounded-3xl border-2 border-red-600 text-white bg-transparent cursor-pointer placeholder-white"
+          className="text-center w-[25rem] py-2 rounded-3xl border-2text-md font-semibold text-white border border-[#db0000] bg-transparent dark:border-[#db0000] dark:placeholder-gray-500 dark:text-white hover:bg-[#db0000] hover:placeholder:text-white"
           value={search}
           onChange={handleInputChange}
           onKeyDown={handleEnterKeyPress}
