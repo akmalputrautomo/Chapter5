@@ -37,7 +37,7 @@ export const Login = () => {
   return (
     <div className="flex flex-col justify-center items-center bg-gradient-to-r from-blue-800 via-gray-600 to-gray-400 h-screen">
       <div className="border-4 border-black px-20 py-16 bg-white rounded-lg">
-        <h1 className="text-4xl font-bold pb-10 text-center">LOGIN</h1>
+        <h1 className="text-4xl font-bold pb-10 text-center">LOGIN DULU BRO</h1>
         <div className="flex flex-col items-center relative">
           <h1 className="text-lg font-normal text-left w-96">Email :</h1>
           <input placeholder="Email Address" onChange={handleInput} className="border-2 border-black w-96 py-2 px-2 rounded text-center" value={Email} id="email" type="email" />
