@@ -1,18 +1,22 @@
 import Cookies from "universal-cookie"
 
+//default value
 const cookies = new Cookies()
 
+//kunci cookies
 export const CookieKeys = {
     AuthToken: "TokenLogin",
     User: "user",
     LimitError: 100,
 }
 
+//setting default
 const CookieOptions = {
     path: "/",
     secure: true,
 }
 
+//setting CRD
 export const CookieStorage = {
     set: (key, data, options) => {
         return cookies.set(key, data, { ...CookieOptions, ...options })

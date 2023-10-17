@@ -11,8 +11,8 @@ export const RouterMovie = () => {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home/>} />
-        <Route path='/Search' element={<SearchMovie/>}/>
-        <Route path='/Detail/:id' element={<DetailMovie/>}/>
+        <Route path='/Search/:namemovie' element={<SearchMovie/>}/>
+        <Route path='/Detail/:movieId' element={<DetailMovie/>}/>
         <Route path='/Register' element={<Register/>}/>
         <Route path='/Login' element={<Login/>}/>
       </Routes>

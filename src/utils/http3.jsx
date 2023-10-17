@@ -10,6 +10,7 @@ const http3 = axios.create({
     }
 })
 
+//memotong pada saat proses berjalan
 http3.interceptors.request.use(
     (config) => {
         config.headers = {

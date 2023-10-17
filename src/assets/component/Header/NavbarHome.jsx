@@ -16,9 +16,9 @@ export const NavbarHome = () => {
   // handle search dengan enter setelah input movie
   const handleEnterKeyPress = (e) => {
     if (e.key === "Enter" && search.trim() !== "") {
-      navigate(`/Search?query=${search}`);
+      navigate(`/Search/${search}`);
     }
-  };  
+  }; 
 
   const Logout = () => {
       CookieStorage.remove(CookieKeys.AuthToken);
