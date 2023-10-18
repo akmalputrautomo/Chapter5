@@ -56,26 +56,6 @@ export const NavbarHome = () => {
 
       {/* Button Login Register Logout*/}
       <div className="px-3 mx-3 space-x-3 flex items-center">
-        <button
-          type="button"
-          className="px-6 py-2 bg-transparent text-red-500 border border-red-500 rounded-3xl hover:bg-red-600 hover:text-white"
-          onClick={() => {
-            navigate("/Login");
-          }}
-        >
-          Login
-        </button>
-
-        <button
-          type="button"
-          className="px-4 py-2 bg-red-600 text-white rounded-3xl hover:bg-red-700"
-          onClick={() => {
-            navigate("/Register");
-          }}
-        >
-          Register
-        </button>
-
         <span className="font-bold text-red-500 cursor-pointer hover:text-white">
           <AiOutlinePoweroff size={35} onClick={Logout} />
         </span>
