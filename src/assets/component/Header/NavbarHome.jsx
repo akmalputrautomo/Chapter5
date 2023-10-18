@@ -54,7 +54,7 @@ export const NavbarHome = () => {
         />
       </div>
 
-      {/* Button Login Register Logout*/}
+      {/* Button Logout*/}
       <div className="px-3 mx-3 space-x-3 flex items-center">
         <span className="font-bold text-red-500 cursor-pointer hover:text-white">
           <AiOutlinePoweroff size={35} onClick={Logout} />

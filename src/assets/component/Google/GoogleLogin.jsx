@@ -51,7 +51,7 @@ function GoogleLogin() {
       className=" text-black font-bold py-2 px-4"
       onClick={() => loginWithGoogle()}>
         <div className="bg-blue-500 gap-4 px-2 py-2 text-white flex items-center rounded">
-        <FcGoogle size={30} className="bg-white rounded"/> Continue with Google
+        <FcGoogle size={30} className="bg-white rounded"/> Sign in with Google
         </div>
     </button>
   );

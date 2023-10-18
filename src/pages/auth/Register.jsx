@@ -90,15 +90,15 @@ export const Register = () => {
             Register
           </button>
 
-          <span className="flex justify-center items-center text-black">
+          <span className="flex justify-center items-center text-black pt-4">
             Already have an account?
             <span
-              className="px-2 cursor-pointer underline underline-offset-2 font-bold pt-4"
+              className="px-2 cursor-pointer underline underline-offset-2 font-bold"
               onClick={() => {
                 navigate("/Login");
               }}
             >
-              Sign In
+            Sign In
             </span>
           </span>
         </div>
