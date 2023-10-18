@@ -35,48 +35,31 @@ export const Login = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center bg-gradient-to-r from-blue-800 via-gray-600 to-gray-400 h-screen">
+    <div className="flex flex-col justify-center items-center bg-gradient-to-r from-red-600 via-gray-600 to-red-400 h-screen">
       <div className="border-4 border-black px-20 py-16 bg-white rounded-lg">
         <h1 className="text-4xl font-bold pb-10 text-center">LOGIN</h1>
         <div className="flex flex-col items-center relative">
           <h1 className="text-lg font-normal text-left w-96">Email :</h1>
-          <input
-            placeholder="Email Address"
-            onChange={handleInput}
-            className="border-2 border-black w-96 py-2 px-2 rounded text-center"
-            value={Email}
-            id="email"
-            type="email"/>
-          <AiOutlineMail
-            className="absolute right-3 top-10 text-black"
-            size={20}/>
+          <input placeholder="Email Address" onChange={handleInput} className="border-2 border-black w-96 py-2 px-2 rounded text-center" value={Email} id="email" type="email" />
+          <AiOutlineMail className="absolute right-3 top-10 text-black" size={20} />
 
           <h1 className="text-lg font-normal pt-8 text-left w-96">Password :</h1>
-          <input
-            placeholder="Password"
-            onChange={handleInput}
-            className="border-2 border-black w-96 py-2 px-2 rounded text-center"
-            value={Password}
-            id="password"
-            type={showPassword ? "text" : "password"}/>
+          <input placeholder="Password" onChange={handleInput} className="border-2 border-black w-96 py-2 px-2 rounded text-center" value={Password} id="password" type={showPassword ? "text" : "password"} />
           {showPassword ? (
-            <AiFillEye
-              className="absolute right-3 top-36 text-black cursor-pointer"
-              size={20}
-              onClick={handleShowPassword}/>
+            <AiFillEye className="absolute right-3 top-36 text-black cursor-pointer" size={20} onClick={handleShowPassword} />
           ) : (
-            <AiFillEyeInvisible
-              className="absolute right-3 top-36 text-black cursor-pointer"
-              size={20}
-              onClick={handleShowPassword}/>
+            <AiFillEyeInvisible className="absolute right-3 top-36 text-black cursor-pointer" size={20} onClick={handleShowPassword} />
           )}
         </div>
-      
         <div className="py-4 flex flex-col">
           <button
             type="button"
             className="px-9 py-2 bg-black text-white rounded-lg mt-2 w-96"
-            onClick={() => {handleLogin()}}>Login
+            onClick={() => {
+              handleLogin();
+            }}
+          >
+            Login
           </button>
 
           <div className="flex justify-center items-center py-4">
@@ -91,7 +74,17 @@ export const Login = () => {
               onClick={() => {navigate("/Register")}}
               >Sign Up</span>
             </span>
+          </span>
         </div>
+        <GoogleLogin
+          onSuccess={(credentialResponse) => {
+            console.log(credentialResponse);
+          }}
+          onError={() => {
+            console.log("Login Failed");
+          }}
+          useOneTap
+        />
       </div>
     </div>
   );

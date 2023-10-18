@@ -18,13 +18,13 @@ export const NavbarHome = () => {
     if (e.key === "Enter" && search.trim() !== "") {
       navigate(`/Search/${search}`);
     }
-  }; 
+  };
 
   const Logout = () => {
-      CookieStorage.remove(CookieKeys.AuthToken);
-      toast.warning("Logout Berhasil");
-      setTimeout(() => {
-        window.location.href = "/Login";
+    CookieStorage.remove(CookieKeys.AuthToken);
+    toast.warning("Logout Berhasil");
+    setTimeout(() => {
+      window.location.href = "/Login";
     }, 2000);
   };
 
@@ -34,7 +34,11 @@ export const NavbarHome = () => {
       <div className="px-2 py-3">
         <span
           className="text-red-600 text-3xl font-bold cursor-pointer underline underline-offset-1"
-          onClick={() => {navigate("/")}}>Movie-List
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Movie-List
         </span>
       </div>
 
@@ -43,7 +47,7 @@ export const NavbarHome = () => {
         <input
           type="text"
           placeholder="What do you want to watch?"
-          className="text-center w-[25rem] py-2 rounded-3xl border-2 border-red-600 text-white bg-transparent cursor-pointer placeholder-white"
+          className="text-center w-[25rem] py-2 rounded-3xl border-2text-md font-semibold text-white border border-[#db0000] bg-transparent dark:border-[#db0000] dark:placeholder-gray-500 dark:text-white hover:bg-[#db0000] hover:placeholder:text-white"
           value={search}
           onChange={handleInputChange}
           onKeyDown={handleEnterKeyPress}
@@ -55,17 +59,25 @@ export const NavbarHome = () => {
         <button
           type="button"
           className="px-6 py-2 bg-transparent text-red-500 border border-red-500 rounded-3xl hover:bg-red-600 hover:text-white"
-          onClick={()=>{navigate("/Login")}}>Login
+          onClick={() => {
+            navigate("/Login");
+          }}
+        >
+          Login
         </button>
 
         <button
           type="button"
           className="px-4 py-2 bg-red-600 text-white rounded-3xl hover:bg-red-700"
-          onClick={()=>{navigate("/Register")}}>Register
+          onClick={() => {
+            navigate("/Register");
+          }}
+        >
+          Register
         </button>
 
         <span className="font-bold text-red-500 cursor-pointer hover:text-white">
-          <AiOutlinePoweroff size={35} onClick={Logout}/>
+          <AiOutlinePoweroff size={35} onClick={Logout} />
         </span>
       </div>
     </div>

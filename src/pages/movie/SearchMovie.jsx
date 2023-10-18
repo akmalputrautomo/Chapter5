@@ -33,11 +33,16 @@ export const SearchMovie = () => {
       {movies && (
         <div className="flex flex-wrap justify-center items-center pb-6 pt-10">
           {movies.map((movieSearch) => (
-              <div className="w-[20rem] h-[37rem] bg-black m-3 border-2 border-red-500 rounded-lg hover:scale-90 hover:cursor-pointer"
-                key={movieSearch.id} onClick={()=>{navigate(`/detail/${movieSearch.id}`)}}>
-                <img src={`https://image.tmdb.org/t/p/w500${movieSearch.poster_path}`} alt="" className="border-b rounded" />
-                <span className="text-center text-xl text-white flex items-center justify-center p-4 pt-4">"{movieSearch.title}"</span>
-              </div>
+            <div
+              className="w-[20rem] h-[37rem] bg-black m-3 border-2 border-red-500 rounded-lg hover:scale-90 hover:cursor-pointer"
+              key={movieSearch.id}
+              onClick={() => {
+                navigate(`/detail/${movieSearch.id}`);
+              }}
+            >
+              <img src={`https://image.tmdb.org/t/p/w500${movieSearch.poster_path}`} alt="" className="border-b rounded" />
+              <span className="text-center text-xl text-white flex items-center justify-center p-4 pt-4">"{movieSearch.title}"</span>
+            </div>
           ))}
         </div>
       )}

@@ -61,7 +61,7 @@ export const Register = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center bg-gradient-to-r from-gray-400 via-gray-600 to-blue-800 h-screen">
+    <div className="flex flex-col justify-center items-center bg-gradient-to-r from-red-400 via-gray-600 to-red-800 h-screen">
       <div className="border-4 border-black px-20 py-16 bg-white rounded-lg">
         <h1 className="text-4xl font-bold pb-10 text-center">REGISTER</h1>
         <div className="flex flex-col items-center relative">

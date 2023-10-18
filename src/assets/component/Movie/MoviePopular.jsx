@@ -53,7 +53,12 @@ export const MoviePopular = () => {
       <div className="flex flex-wrap justify-center items-center pb-6">
         {data?.map((value, index) => {
           return (
-            <div key={value.id} onClick={()=>{navigate(`/detail/${value.id}`)}}>
+            <div
+              key={value.id}
+              onClick={() => {
+                navigate(`/detail/${value.id}`);
+              }}
+            >
               <RenderMovie dataMovie={value} DataAll={data.results} />
             </div>
           );
