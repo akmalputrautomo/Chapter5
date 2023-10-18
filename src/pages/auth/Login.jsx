@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineMail, AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { useLoginUser } from "../../services/auth/Login-User";
-import  GoogleLogin  from "../../assets/component/Google/GoogleLogin";
+import GoogleLogin from "../../assets/component/Google/GoogleLogin";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -63,28 +63,21 @@ export const Login = () => {
           </button>
 
           <div className="flex justify-center items-center py-4">
-            <GoogleLogin/>
+            <GoogleLogin />
           </div>
 
-          <span
-            className="flex justify-center items-center text-black"
-            >Don't have an account?
-            <span 
-              className="px-2 cursor-pointer underline underline-offset-2 font-bold" 
-              onClick={() => {navigate("/Register")}}
-              >Sign Up</span>
+          <span className="flex justify-center items-center text-black">
+            Don't have an account?
+            <span
+              className="px-2 cursor-pointer underline underline-offset-2 font-bold"
+              onClick={() => {
+                navigate("/Register");
+              }}
+            >
+              Sign Up
             </span>
           </span>
         </div>
-        <GoogleLogin
-          onSuccess={(credentialResponse) => {
-            console.log(credentialResponse);
-          }}
-          onError={() => {
-            console.log("Login Failed");
-          }}
-          useOneTap
-        />
       </div>
     </div>
   );
