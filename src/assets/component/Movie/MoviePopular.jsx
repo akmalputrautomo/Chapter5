@@ -4,6 +4,10 @@ import { fetchDataMoviePopular, useMovieDataPopularQuery } from "../../../servic
 import { IoMdArrowForward, IoMdArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { CookieKeys, CookieStorage } from "../../../utils/cookies";
+import "swiper/css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import "swiper/css/navigation";
 
 export const MoviePopular = () => {
   const token = CookieStorage.get(CookieKeys.AuthToken);
@@ -29,7 +33,7 @@ export const MoviePopular = () => {
       </div>
 
       {/* Prev dan Next Page */}
-      <div className="text-center text-white text-2xl flex items-center justify-center gap-2">
+      {/* <div className="text-center text-white text-2xl flex items-center justify-center gap-2">
         <span
           className={`pt-6 pb-6 cursor-pointer ${PageNow === 1 ? "pointer-events-none text-gray-500" : ""}`}
           onClick={() => {
@@ -47,10 +51,10 @@ export const MoviePopular = () => {
         >
           <IoMdArrowForward size={40} />
         </span>
-      </div>
+      </div> */}
 
       {/* Card Movie Popular */}
-      <div className="flex flex-wrap justify-center items-center pb-6">
+      {/* <div className="flex flex-wrap justify-center items-center pb-6">
         {data?.map((value, index) => {
           return (
             <div
@@ -63,7 +67,34 @@ export const MoviePopular = () => {
             </div>
           );
         })}
-      </div>
+      </div> */}
+      <Swiper
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        spaceBetween={10}
+        slidesPerView={4}
+        onSlideChange={() => console.log("slide change")}
+        onSwiper={(swiper) => console.log(swiper)}
+        className="mySwiper"
+      >
+        {data.map((value, index) => (
+          <SwiperSlide>
+            <div
+              className="px-10 border-b-2 pb-4 border-red-500"
+              key={value.id}
+              onClick={() => {
+                navigate(`/detail/${value.id}`);
+              }}
+            >
+              <RenderMovie dataMovie={value} DataAll={data.results} />
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 };
