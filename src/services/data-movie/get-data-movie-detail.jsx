@@ -7,7 +7,7 @@ const fetchDataMovieDetail = async (token, movieId) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  const response = await http3.get(API_ENDPOINT.NOW_DETAIL(movieId.movieId));
+  const response = await http3.get(API_ENDPOINT.DETAIL_MOVIE(movieId.movieId));
   return response.data;
 };
 

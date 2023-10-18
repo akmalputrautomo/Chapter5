@@ -12,7 +12,7 @@ export const RouterMovie = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Search/:namemovie" element={<SearchMovie />} />
-        <Route path="/detail/:movieId" element={<DetailMovie />} />
+        <Route path="/Detail/:movieId" element={<DetailMovie />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/Login" element={<Login />} />
       </Routes>

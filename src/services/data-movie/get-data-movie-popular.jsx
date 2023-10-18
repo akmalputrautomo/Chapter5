@@ -12,8 +12,8 @@ const fetchDataMoviePopular = async (token) => {
   return data;
 };
 
-// const useMovieDataPopularQuery = (options) => {
-//   return useQuery([API_ENDPOINT.POPULAR, options], fetchDataMoviePopular);
-// };
+const useMovieDataPopularQuery = (options) => {
+  return useQuery([API_ENDPOINT.POPULAR, options], fetchDataMoviePopular);
+};
 
-export { fetchDataMoviePopular };
+export { fetchDataMoviePopular, useMovieDataPopularQuery };

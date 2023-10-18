@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { NavbarHome } from "../../assets/component/Header/NavbarHome";
 import { useSearchMovieDataQuery } from "../../services/data-movie/get-data-search-movie";
-import { Link, Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const SearchMovie = () => {
+  const navigate = useNavigate();
   const { namemovie } = useParams();
   const [movies, setMovies] = useState([]);
   const [page, setpage] = useState(1);
@@ -18,7 +19,6 @@ export const SearchMovie = () => {
       setMovies(searchM.data);
     }
   };
-  console.log(searchM, "data");
   useEffect(() => {
     searchMovies();
   }, [namemovie, isSuccess]);
@@ -33,12 +33,16 @@ export const SearchMovie = () => {
       {movies && (
         <div className="flex flex-wrap justify-center items-center pb-6 pt-10">
           {movies.map((movieSearch) => (
-            <Link to={`/detail/${movieSearch.id}`}>
-              <div className="w-[20rem] h-[37rem] bg-black m-3 border-2 border-red-500 rounded-lg hover:scale-90 hover:cursor-pointer">
-                <img src={`https://image.tmdb.org/t/p/w500${movieSearch.poster_path}`} alt="" className="border-b rounded" />
-                <span className="text-center text-xl text-white flex items-center justify-center p-4 pt-4">"{movieSearch.title}"</span>
-              </div>
-            </Link>
+            <div
+              className="w-[20rem] h-[37rem] bg-black m-3 border-2 border-red-500 rounded-lg hover:scale-90 hover:cursor-pointer"
+              key={movieSearch.id}
+              onClick={() => {
+                navigate(`/detail/${movieSearch.id}`);
+              }}
+            >
+              <img src={`https://image.tmdb.org/t/p/w500${movieSearch.poster_path}`} alt="" className="border-b rounded" />
+              <span className="text-center text-xl text-white flex items-center justify-center p-4 pt-4">"{movieSearch.title}"</span>
+            </div>
           ))}
         </div>
       )}

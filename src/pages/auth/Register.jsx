@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { AiOutlineMail, AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { FaUserGraduate } from "react-icons/fa";
 import { toast } from "react-toastify";
+import GoogleLogin from "../../assets/component/Google/GoogleLogin";
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -116,8 +117,12 @@ export const Register = () => {
             onClick={() => {handleRegister()}}>Register
           </button>
 
+          <div className="flex justify-center items-center py-4">
+            <GoogleLogin/>
+          </div>
+
           <span
-            className="flex justify-center items-center text-black py-4"
+            className="flex justify-center items-center text-black"
             >Already have an account?
             <span 
               className="px-2 cursor-pointer underline underline-offset-2 font-bold" 

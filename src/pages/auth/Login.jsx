@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineMail, AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { useLoginUser } from "../../services/auth/Login-User";
-import { GoogleLogin } from "@react-oauth/google";
+import GoogleLogin from "../../assets/component/Google/GoogleLogin";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -62,7 +62,11 @@ export const Login = () => {
             Login
           </button>
 
-          <span className="flex justify-center items-center text-black py-4">
+          <div className="flex justify-center items-center py-4">
+            <GoogleLogin />
+          </div>
+
+          <span className="flex justify-center items-center text-black">
             Don't have an account?
             <span
               className="px-2 cursor-pointer underline underline-offset-2 font-bold"
@@ -74,15 +78,6 @@ export const Login = () => {
             </span>
           </span>
         </div>
-        <GoogleLogin
-          onSuccess={(credentialResponse) => {
-            console.log(credentialResponse);
-          }}
-          onError={() => {
-            console.log("Login Failed");
-          }}
-          useOneTap
-        />
       </div>
     </div>
   );

@@ -15,7 +15,6 @@ export const DetailMovie = () => {
   const getmovie = async () => {
     const datapopular = await fetchDataMovieDetail(token, movieId);
     setdetails(datapopular.data);
-    // console.log(setdetails, "data");
   };
 
   useEffect(() => {
@@ -23,7 +22,7 @@ export const DetailMovie = () => {
   }, [movieId.movieId]);
 
   return (
-    // Gambar Movie Detail Berdasarkan ID
+    // Lihat Movie Detail Berdasarkan ID
     <div className="relative">
       {details && (
         <div

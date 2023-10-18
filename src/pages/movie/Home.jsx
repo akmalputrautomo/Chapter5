@@ -5,7 +5,7 @@ import { Footer } from "../../assets/component/Header/Footer";
 import { useGetDataUser } from "../../services/auth/get-User";
 
 export const Home = () => {
-  const { data: dataToken } = useGetDataUser({});
+  const dataMovie = useGetDataUser({});
 
   return (
     <div>

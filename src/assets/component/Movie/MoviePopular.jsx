@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import { RenderMovie } from "./RenderMovie";
 import { fetchDataMoviePopular, useMovieDataPopularQuery } from "../../../services/data-movie/get-data-movie-popular";
 import { IoMdArrowForward, IoMdArrowBack } from "react-icons/io";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CookieKeys, CookieStorage } from "../../../utils/cookies";
 
 export const MoviePopular = () => {
   const token = CookieStorage.get(CookieKeys.AuthToken);
   const [data, setdata] = useState([]);
   const [PageNow, setPageNow] = useState(1);
+  const navigate = useNavigate();
 
   const getmovie = async () => {
     const datapopular = await fetchDataMoviePopular(token);
@@ -50,13 +51,16 @@ export const MoviePopular = () => {
 
       {/* Card Movie Popular */}
       <div className="flex flex-wrap justify-center items-center pb-6">
-        {data.map((value, index) => {
+        {data?.map((value, index) => {
           return (
-            <Link to={`/detail/${value.id}`}>
-              <div>
-                <RenderMovie dataMovie={value} DataAll={data.results} />
-              </div>
-            </Link>
+            <div
+              key={value.id}
+              onClick={() => {
+                navigate(`/detail/${value.id}`);
+              }}
+            >
+              <RenderMovie dataMovie={value} DataAll={data.results} />
+            </div>
           );
         })}
       </div>
