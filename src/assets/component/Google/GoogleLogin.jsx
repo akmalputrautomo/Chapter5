@@ -26,12 +26,11 @@ function GoogleLogin() {
       const { token } = response.data.data;
 
       // Simpan token ke dalam cookies
-      CookieStorage.set(CookieKeys.AuthToken, token)
-      toast.success("Login Berhasil!")
-        setTimeout(() => {
-            window.location.href = "/";
-          }, 2000);
-      
+      CookieStorage.set(CookieKeys.AuthToken, token);
+      toast.success("Login Berhasil!");
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 2000);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         toast.error(error.response.data.message);
@@ -42,17 +41,14 @@ function GoogleLogin() {
   };
 
   const loginWithGoogle = useGoogleLogin({
-    onSuccess: (responseGoogle) =>
-      registerLoginWithGoogleAction(responseGoogle.access_token),
+    onSuccess: (responseGoogle) => registerLoginWithGoogleAction(responseGoogle.access_token),
   });
 
   return (
-    <button
-      className=" text-black font-bold py-2 px-4"
-      onClick={() => loginWithGoogle()}>
-        <div className="bg-blue-500 gap-4 px-2 py-2 text-white flex items-center rounded">
-        <FcGoogle size={30} className="bg-white rounded"/> Continue with Google
-        </div>
+    <button className=" text-black font-bold py-2 px-4" onClick={() => loginWithGoogle()}>
+      <div className="bg-blue-500 gap-4 px-2 py-2 text-white flex items-center rounded">
+        <FcGoogle size={30} className="bg-white rounded" /> Continue with Google
+      </div>
     </button>
   );
 }
