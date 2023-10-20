@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { RenderMovie } from "./RenderMovie";
-import { fetchDataMoviePopular, useMovieDataPopularQuery } from "../../../services/data-movie/get-data-movie-popular";
-import { IoMdArrowForward, IoMdArrowBack } from "react-icons/io";
+import { fetchDataMoviePopular } from "../../../services/data-movie/get-data-movie-popular";
 import { useNavigate } from "react-router-dom";
 import { CookieKeys, CookieStorage } from "../../../utils/cookies";
 import "swiper/css";
@@ -12,7 +11,6 @@ import "swiper/css/navigation";
 export const MoviePopular = () => {
   const token = CookieStorage.get(CookieKeys.AuthToken);
   const [data, setdata] = useState([]);
-  const [PageNow, setPageNow] = useState(1);
   const navigate = useNavigate();
 
   const getmovie = async () => {
@@ -28,73 +26,34 @@ export const MoviePopular = () => {
 
   return (
     <div className="bg-black pt-5">
-      <div className="text-center px-20 border-b-2 pb-4 border-red-500">
+      <div className="text-center px-20 border-b-2 pb-8 pt-6 border-red-500">
         <h1 className="text-white text-5xl font-bold mb-4"> Popular Movie </h1>
       </div>
 
-      {/* Prev dan Next Page */}
-      {/* <div className="text-center text-white text-2xl flex items-center justify-center gap-2">
-        <span
-          className={`pt-6 pb-6 cursor-pointer ${PageNow === 1 ? "pointer-events-none text-gray-500" : ""}`}
-          onClick={() => {
-            if (PageNow > 1) setPageNow(PageNow - 1);
+      <div className="mySwiper">
+        <Swiper
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
           }}
+          navigation={true}
+          modules={[Autoplay, Pagination, Navigation]}
+          spaceBetween={-50}
+          slidesPerView={4}
+          onSlideChange={() => console.log("slide change")}
+          onSwiper={(swiper) => console.log(swiper)}  
         >
-          <IoMdArrowBack size={40} />
-        </span>
-        <h1 className="pt-6 pb-6">Movie Page {PageNow}</h1>
-        <span
-          className="pt-6 pb-6 cursor-pointer flex items-center"
-          onClick={() => {
-            setPageNow(PageNow + 1);
-          }}
-        >
-          <IoMdArrowForward size={40} />
-        </span>
-      </div> */}
-
-      {/* Card Movie Popular */}
-      {/* <div className="flex flex-wrap justify-center items-center pb-6">
-        {data?.map((value, index) => {
-          return (
-            <div
-              key={value.id}
-              onClick={() => {
-                navigate(`/detail/${value.id}`);
-              }}
-            >
-              <RenderMovie dataMovie={value} DataAll={data.results} />
-            </div>
-          );
-        })}
-      </div> */}
-      <Swiper
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        spaceBetween={10}
-        slidesPerView={4}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
-        className="mySwiper"
-      >
-        {data.map((value, index) => (
-          <SwiperSlide>
-            <div
-              className="px-10 border-b-2 pb-4 border-red-500"
-              key={value.id}
-              onClick={() => {
-                navigate(`/detail/${value.id}`);
-              }}
-            >
-              <RenderMovie dataMovie={value} DataAll={data.results} />
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+          {data.map((value, index) => (
+            <SwiperSlide>
+              <div className="px-10 border-b-2 pb-10 border-red-500 pt-10"
+                key={value.id}
+                onClick={() => {navigate(`/detail/${value.id}`)}}>
+                <RenderMovie dataMovie={value} DataAll={data.results} />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </div>
   );
 };
